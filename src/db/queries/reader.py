@@ -1,6 +1,7 @@
 from src.db.database import Database
 
-def insert_data(username: str, title: str, first_name: str, last_name: str):
+# TODO: Query to insert reader
+def insert_data(username: str, title: str, first_name: str, last_name: str) -> tuple[str]:
     conn = Database()
 
     query = """
@@ -9,7 +10,8 @@ def insert_data(username: str, title: str, first_name: str, last_name: str):
             title,
             first_name,
             last_name
-        ) VALUES (%s, %s ,%s, %s) RETURNING *;
+        ) VALUES(%s, %s, %s, %s)
+        RETURNING *;
     """
 
     with conn.cursor() as cursor:
@@ -17,3 +19,4 @@ def insert_data(username: str, title: str, first_name: str, last_name: str):
         reader = cursor.fetchone()
         conn.commit()
         return reader
+    

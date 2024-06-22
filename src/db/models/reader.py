@@ -2,9 +2,9 @@ from typing import Optional
 from src.db.queries import reader as reader_queries
 
 class Reader:
-    def __init__(self, username: str, tile: str, first_name: str, last_name: str) -> None:
+    def __init__(self, username: str, title: str, first_name: str, last_name: str) -> None:
         self.username = username
-        self.title = tile
+        self.title = title
         self.first_name = first_name
         self.last_name = last_name
 
